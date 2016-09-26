@@ -1,4 +1,9 @@
 ﻿using GestorAtributos.objeto;
+using GestorAtributos.objetoVO;
+using GestorAtributos.repositories;
+using GestorAtributos.servicio;
+using GestorAtributos.utils;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +15,43 @@ namespace GestorAtributosWeb.Controllers
 {
     public class AtributosController : ApiController
     {
-        // GET: api/Atributos
-        public IEnumerable<Atributo> Get()
+        private IAtributoService sut;
+        public AtributosController()
         {
-            return new Atributo[] {
-                new Atributo() { id = 1, codigo = "A1", nombre = "Primer Atributo", descripcion = "Primera Descripcion", tipoID = 1, categoriaID = 1 },
-                new Atributo() { id = 2, codigo = "A2", nombre = "Segundo Atributo", descripcion = "Sengunda Descripcion", tipoID = 2, categoriaID = 2 },
-                new Atributo() { id = 3, codigo = "A3", nombre = "Tercero Atributo", descripcion = "Tercera Descripcion", tipoID = 3, categoriaID = 3 },
-            };
+            var container = new UnityContainer();
+            container.RegisterType<IAtributoRepository, AtributoRepository>();
+            container.RegisterInstance<IAtributoUtil>(new AtributoUtil());
+            container.RegisterType<IAtributoService, AtributoService>();
+            sut = container.Resolve<AtributoService>();
+        }
+        // GET: api/Atributos
+        public ICollection<AtributoVO> Get()
+        {
+            return sut.Get();
         }
 
         // GET: api/Atributos/5
-        public string Get(int id)
+        public AtributoVO Get(int id)
         {
-            return "value";
+            return sut.Get(id);
         }
 
         // POST: api/Atributos
-        public void Post([FromBody]string value)
+        public AtributoVO Post([FromBody]AtributoVO _atrivutoVO)
         {
+            return sut.Post(_atrivutoVO);
         }
 
         // PUT: api/Atributos/5
-        public void Put(int id, [FromBody]string value)
+        public AtributoVO Put(int id, [FromBody]AtributoVO _atrivutoVO)
         {
+            return sut.Put(_atrivutoVO);
         }
 
         // DELETE: api/Atributos/5
-        public void Delete(int id)
+        public Boolean Delete(int id)
         {
+            return sut.Delete(id);
         }
     }
 }
