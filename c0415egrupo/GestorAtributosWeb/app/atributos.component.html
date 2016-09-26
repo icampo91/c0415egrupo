@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Listado de Atributos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>C&oacute;digo</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Categor&iacute;a</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let atributo of atributos" (click)="onSelect(atributo)">
+                <td>{{atributo.codigo}}</td>
+                <td>{{atributo.nombre}}</td>
+                <td>{{tipos[atributo.tipoID-1].nombre}}</td>
+                <td>{{categorias[atributo.categoriaID-1].nombre}}</td>
+                <td>
+                    <button (click)="gotoDetail(atributo)">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </button>
+                    <button (click)="gotoDetail(atributo)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>                
+                    <button (click)="delete(atributo); $event.stopPropagation()">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
