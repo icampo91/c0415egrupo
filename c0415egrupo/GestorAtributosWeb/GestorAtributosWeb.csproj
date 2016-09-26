@@ -108,8 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.component.css" />
-    <Content Include="app\hero-detail.component.css" />
-    <Content Include="app\hero-detail.component.html" />
+    <Content Include="app\atributo-detail.component.css" />
+    <Content Include="app\atributo-detail.component.html" />
     <Content Include="app\atributos.component.css" />
     <Content Include="app\atributos.component.html" />
     <Content Include="Global.asax" />
@@ -153,7 +153,7 @@
     <TypeScriptCompile Include="app\tipo.service.ts" />
     <TypeScriptCompile Include="app\categoria.ts" />
     <TypeScriptCompile Include="app\tipo.ts" />
-    <TypeScriptCompile Include="app\hero-detail.component.ts" />
+    <TypeScriptCompile Include="app\atributo-detail.component.ts" />
     <TypeScriptCompile Include="app\atributo.service.ts" />
     <TypeScriptCompile Include="app\atributo.ts" />
     <TypeScriptCompile Include="app\atributos.component.ts" />

@@ -2,7 +2,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AtributosComponent }     from './atributos.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { AtributoDetailComponent } from './atributo-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'detail/:id',
-    component: HeroDetailComponent
+    component: AtributoDetailComponent
   },
   {
     path: 'atributos',
