@@ -72,7 +72,7 @@ export class AtributosComponent implements OnInit {
       this.selectedAtributo = atributo;
   }
 
-  gotoDetail(): void {
-      this.router.navigate(['/detail', this.selectedAtributo.IdAtributo]);
+  gotoDetail(atributo: Atributo): void {
+      this.router.navigate(['/detail', atributo.IdAtributo]);
   }
 }

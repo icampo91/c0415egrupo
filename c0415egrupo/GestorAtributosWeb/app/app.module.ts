@@ -11,7 +11,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }         from './app.component';
 import { AtributosComponent }      from './atributos.component';
-import { HeroDetailComponent }  from './hero-detail.component';
+import { AtributoDetailComponent }  from './atributo-detail.component';
 import { AtributoService }          from './atributo.service';
 import { TipoService }          from './tipo.service';
 import { CategoriaService }          from './categoria.service';
@@ -26,7 +26,7 @@ import { routing }              from './app.routing';
   ],
   declarations: [
     AppComponent,
-    HeroDetailComponent,
+    AtributoDetailComponent,
     AtributosComponent,
   ],
   providers: [
@@ -38,10 +38,3 @@ import { routing }              from './app.routing';
 })
 export class AppModule {
 }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

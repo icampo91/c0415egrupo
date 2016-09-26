@@ -8,10 +8,10 @@ import { AtributoService } from './atributo.service';
 @Component({
   moduleId: module.id,
   selector: 'my-hero-detail',
-  templateUrl: 'hero-detail.component.html',
-  styleUrls: [ 'hero-detail.component.css' ]
+  templateUrl: 'atributo-detail.component.html',
+  styleUrls: [ 'atributo-detail.component.css' ]
 })
-export class HeroDetailComponent implements OnInit {
+export class AtributoDetailComponent implements OnInit {
   atributo: Atributo;
 
   constructor(
