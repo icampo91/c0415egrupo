@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GestorAtributos.servicio
 {
-    public class AtributoService
+    public class AtributoService : IAtributoService
     {
         IAtributoRepository atributoRepository;
         private IAtributoUtil atributoUtil;
@@ -37,7 +37,7 @@ namespace GestorAtributos.servicio
             AtributoVO atributoVO = atributoUtil.ConvierteEntity2VO(atributo);
             return atributoVO;
         }
-        public AtributoVO Modifica(AtributoVO _atributoVO)
+        public AtributoVO Put(AtributoVO _atributoVO)
         {
             Atributo atributo = atributoUtil.ConvierteVO2Entity(_atributoVO);
             atributo=this.atributoRepository.Put(atributo);

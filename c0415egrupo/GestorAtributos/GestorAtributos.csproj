@@ -76,6 +76,10 @@
     <Compile Include="repositories\ITipoRepository.cs" />
     <Compile Include="repositories\TipoRepository.cs" />
     <Compile Include="repositories\AtributoRepository.cs" />
+    <Compile Include="servicio\IAtributoService.cs" />
+    <Compile Include="servicio\ICategoriaService.cs" />
+    <Compile Include="servicio\ITipoService.cs" />
+    <Compile Include="servicio\TipoService.cs" />
     <Compile Include="servicio\CategoriaService.cs" />
     <Compile Include="servicio\AtributoService.cs" />
     <Compile Include="utils\CategoriaUtil.cs" />
@@ -89,9 +93,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

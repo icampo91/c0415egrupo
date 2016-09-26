@@ -1,5 +1,4 @@
-﻿
-using GestorAtributos.objeto;
+﻿using GestorAtributos.objeto;
 using GestorAtributos.objetoVO;
 using GestorCategorias.repositories;
 using GestorCategorias.utils;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GestorCategorias.servicio
 {
-    public class CategoriaService
+    public class CategoriaService : ICategoriaService
     {
         ICategoriaRepository categoriaRepository;
         private ICategoriaUtil categoriaUtil;
@@ -38,7 +37,7 @@ namespace GestorCategorias.servicio
             CategoriaVO categoriaVO = categoriaUtil.ConvierteEntity2VO(categoria);
             return categoriaVO;
         }
-        public CategoriaVO Modifica(CategoriaVO _categoriaVO)
+        public CategoriaVO Put(CategoriaVO _categoriaVO)
         {
             Categoria categoria = categoriaUtil.ConvierteVO2Entity(_categoriaVO);
             categoria=this.categoriaRepository.Put(categoria);
