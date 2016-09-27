@@ -1,5 +1,4 @@
 ﻿using GestorAtributos.objetoVO;
-using GestorCategorias.objeto;
 using GestorCategorias.repositories;
 using GestorCategorias.servicio;
 using GestorCategorias.utils;
