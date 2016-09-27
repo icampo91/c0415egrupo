@@ -67,7 +67,6 @@ namespace GestorAtributos.repositories
             using (var gestorDB = new GestorDB())
             {
                 res = gestorDB.atributos.Include("Tipo").Include("Categoria").ToList<Atributo>();
-
             }
             return res;
         }
