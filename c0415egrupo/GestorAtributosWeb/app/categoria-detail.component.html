@@ -1,13 +1,13 @@
 <div *ngIf="categoria">
-  <h2>{{categoria.id}} details!</h2>
+  <h2>{{categoria.nombre}} detalle!</h2>
   <div>
     <label>id: </label>{{categoria.id}}</div>
   <div>
     <label>Nombre: </label>
     <input [(ngModel)]="categoria.nombre" placeholder="Nombre" />
    </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <button (click)="goBack()">Atras</button>
+  <button (click)="save()">Guardar</button>
 </div>
 
 
