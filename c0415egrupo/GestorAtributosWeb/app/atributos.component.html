@@ -14,8 +14,8 @@
             <tr *ngFor="let atributo of atributos" (click)="onSelect(atributo)">
                 <td>{{atributo.codigo}}</td>
                 <td>{{atributo.nombre}}</td>
-                <td>{{tipos[atributo.tipoID-1].nombre}}</td>
-                <td>{{categorias[atributo.categoriaID-1].nombre}}</td>
+                <td>{{atributo.tipoVO.nombre}}</td>
+                <td>{{atributo.categoriaVO.nombre}}</td>
                 <td>
                     <button (click)="gotoDetail(atributo)">
                         <span class="glyphicon glyphicon-eye-open"></span>
