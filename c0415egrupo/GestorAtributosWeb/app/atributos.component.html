@@ -1,5 +1,5 @@
 <div *ngIf="categorias && tipos && atributos" class="container">
-    <h2>Listado de Atributos <button><span class="glyphicon glyphicon-plus"></span></button></h2>
+    <h2>Listado de Atributos </h2><button (click)="gotoCreate()"><span class="glyphicon glyphicon-plus"></span></button>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -20,7 +20,7 @@
                     <button (click)="gotoDetail(atributo)">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </button>
-                    <button (click)="gotoDetail(atributo)">
+                    <button (click)="gotoModify(atributo)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>                
                     <button (click)="delete(atributo); $event.stopPropagation()">

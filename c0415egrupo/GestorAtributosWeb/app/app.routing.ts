@@ -14,8 +14,12 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'detail/:id',
+    path: 'detail/:tipo/:id',
     component: AtributoDetailComponent
+  },
+  {
+      path: 'detail',
+      component: AtributoDetailComponent
   },
   {
     path: 'atributos',

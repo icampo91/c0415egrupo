@@ -1,16 +1,17 @@
-<div *ngIf="atributo && tipos && categorias">
-  <h2>{{atributo.id}} details!</h2>
+<div *ngIf="tipos && categorias">
+  <h2 *ngIf="atributo">Detalle del atributo {{atributo.codigo}}</h2>
+  <h2 *ngIf="!atributo">Nuevo atributo</h2>
     <div>
         <label>C&oacute;digo: </label>
-        <input [(ngModel)]="atributo.codigo" placeholder="name" />
+        <input [(ngModel)]="atributo.codigo" placeholder="name" [disabled]="!modificar"/>
+      </div>
+    <div>
+      <label>Nombre: </label>
+      <input [(ngModel)]="atributo.nombre" placeholder="name" [disabled]="!modificar"/>
     </div>
-  <div>
-    <label>Nombre: </label>
-    <input [(ngModel)]="atributo.nombre" placeholder="name" />
-   </div>
     <div>
         <label>Tipo: </label>
-        <select [(ngModel)]="atributo.tipoID">
+        <select [(ngModel)]="atributo.tipoID" [disabled]="!modificar">
             <option *ngFor="let tipo of tipos" [value]="tipo.id">
                 {{tipo.nombre}}
             </option>
@@ -18,14 +19,14 @@
     </div>
     <div>
         <label>Categor&iacute;a: </label>
-        <select [(ngModel)]="atributo.categoriaID">
+        <select [(ngModel)]="atributo.categoriaID" [disabled]="!modificar">
             <option *ngFor="let categoria of categorias" [value]="categoria.id">
                 {{categoria.nombre}}
             </option>
         </select>
     </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <button (click)="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> Atras</button>
+  <button *ngIf="modificar" (click)="save()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 </div>
 
 

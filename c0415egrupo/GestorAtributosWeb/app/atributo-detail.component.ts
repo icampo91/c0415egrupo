@@ -19,6 +19,8 @@ export class AtributoDetailComponent implements OnInit {
     atributo: Atributo;
     tipos: Tipo[];
     categorias: Categoria[];
+    modificar: boolean;
+    modoCrear: boolean;
 
   constructor(
       private atributoService: AtributoService,
@@ -41,10 +43,17 @@ export class AtributoDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.forEach((params: Params) => {
-      let id = +params['id'];
-      this.atributoService.getAtributo(id)
-          .then(atributo => this.atributo = atributo);
+      this.modificar = true;
+      this.atributo = new Atributo();
+
+      this.route.params.forEach((params: Params) => {
+        let tipo = params['tipo'];
+        let id = +params['id'];        
+        if (tipo == 'v') {
+            this.modificar = false;
+        }
+        this.atributoService.getAtributo(id)
+           .then(atributo => this.atributo = atributo);
       });
     this.getCategorias();
     this.getTipos();
