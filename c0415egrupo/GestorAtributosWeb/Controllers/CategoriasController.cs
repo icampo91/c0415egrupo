@@ -1,4 +1,9 @@
-﻿using GestorAtributos.objeto;
+﻿using GestorAtributos.objetoVO;
+using GestorCategorias.objeto;
+using GestorCategorias.repositories;
+using GestorCategorias.servicio;
+using GestorCategorias.utils;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +15,43 @@ namespace GestorAtributosWeb.Controllers
 {
     public class CategoriasController : ApiController
     {
-        // GET: api/Categorias
-        public IEnumerable<Categoria> Get()
+        private ICategoriaService sut;
+        public CategoriasController()
         {
-            return new Categoria[] {
-                new Categoria() { id=1, nombre="Primera Categoria" },
-                new Categoria() { id=2, nombre="Segunda Categoria" },
-                new Categoria() { id=3, nombre="Tercera Categoria" },
-            };
+            var container = new UnityContainer();
+            container.RegisterType<ICategoriaRepository, CategoriaRepository>();
+            container.RegisterInstance<ICategoriaUtil>(new CategoriaUtil());
+            container.RegisterType<ICategoriaService, CategoriaService>();
+            sut = container.Resolve<CategoriaService>();
+        }
+        // GET: api/Categorias
+        public ICollection<CategoriaVO> Get()
+        {
+            return sut.Get();
         }
 
         // GET: api/Categorias/5
-        public string Get(int id)
+        public CategoriaVO Get(int id)
         {
-            return "value";
+            return sut.Get(id);
         }
 
         // POST: api/Categorias
-        public void Post([FromBody]string value)
+        public CategoriaVO Post([FromBody]CategoriaVO _atrivutoVO)
         {
+            return sut.Post(_atrivutoVO);
         }
 
         // PUT: api/Categorias/5
-        public void Put(int id, [FromBody]string value)
+        public CategoriaVO Put(int id, [FromBody]CategoriaVO _atrivutoVO)
         {
+            return sut.Put(_atrivutoVO);
         }
 
         // DELETE: api/Categorias/5
-        public void Delete(int id)
+        public Boolean Delete(int id)
         {
+            return sut.Delete(id);
         }
     }
 }

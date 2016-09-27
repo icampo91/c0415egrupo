@@ -1,4 +1,9 @@
 ﻿using GestorAtributos.objeto;
+using GestorAtributos.objetoVO;
+using GestorTipos.repositories;
+using GestorTipos.servicio;
+using GestorTipos.utils;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +15,43 @@ namespace GestorAtributosWeb.Controllers
 {
     public class TiposController : ApiController
     {
-        // GET: api/Tipos
-        public IEnumerable<Tipo> Get()
+        private ITipoService sut;
+        public TiposController()
         {
-            return new Tipo[] {
-                new Tipo() { id=1, nombre="Primer Tipo" },
-                new Tipo() { id=2, nombre="Segundo Tipo" },
-                new Tipo() { id=3, nombre="Tercer Tipo" },
-            };
+            var container = new UnityContainer();
+            container.RegisterType<ITipoRepository, TipoRepository>();
+            container.RegisterInstance<ITipoUtil>(new TipoUtil());
+            container.RegisterType<ITipoService, TipoService>();
+            sut = container.Resolve<TipoService>();
+        }
+        // GET: api/Tipos
+        public ICollection<TipoVO> Get()
+        {
+            return sut.Get();
         }
 
         // GET: api/Tipos/5
-        public string Get(int id)
+        public TipoVO Get(int id)
         {
-            return "value";
+            return sut.Get(id);
         }
 
         // POST: api/Tipos
-        public void Post([FromBody]string value)
+        public TipoVO Post([FromBody]TipoVO _atrivutoVO)
         {
+            return sut.Post(_atrivutoVO);
         }
 
         // PUT: api/Tipos/5
-        public void Put(int id, [FromBody]string value)
+        public TipoVO Put(int id, [FromBody]TipoVO _atrivutoVO)
         {
+            return sut.Put(_atrivutoVO);
         }
 
         // DELETE: api/Tipos/5
-        public void Delete(int id)
+        public Boolean Delete(int id)
         {
+            return sut.Delete(id);
         }
     }
 }
