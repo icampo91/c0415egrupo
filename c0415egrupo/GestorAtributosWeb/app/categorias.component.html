@@ -1,0 +1,29 @@
+<div *ngIf="categorias" class="container">
+    <h2>Listado de Categorias <button><span class="glyphicon glyphicon-plus"></span></button></h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let categoria of categorias" (click)="onSelect(categoria)">
+                <td>{{categoria.id}}</td>
+                <td>{{categoria.nombre}}</td>
+                <td>
+                    <button (click)="gotoDetail(categoria)">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </button>
+                    <button (click)="gotoDetail(categoria)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>                
+                    <button (click)="delete(categoria); $event.stopPropagation()">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
