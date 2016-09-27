@@ -1,0 +1,18 @@
+<div *ngIf="categoria">
+  <h2>{{categoria.id}} details!</h2>
+  <div>
+    <label>id: </label>{{categoria.id}}</div>
+  <div>
+    <label>Nombre: </label>
+    <input [(ngModel)]="categoria.nombre" placeholder="Nombre" />
+   </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>
+
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

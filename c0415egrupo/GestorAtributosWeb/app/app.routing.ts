@@ -4,6 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AtributosComponent }     from './atributos.component';
 import { AtributoDetailComponent } from './atributo-detail.component';
 
+import { CategoriasComponent }     from './categorias.component';
+import { CategoriaDetailComponent } from './categoria-detail.component';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -17,6 +20,14 @@ const appRoutes: Routes = [
   {
     path: 'atributos',
     component: AtributosComponent
+  },
+  {
+      path: 'detailCategoria/:id',
+      component: CategoriaDetailComponent
+  },
+  {
+      path: 'categorias',
+      component: CategoriasComponent
   }
 ];
 

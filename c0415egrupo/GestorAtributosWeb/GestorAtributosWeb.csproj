@@ -108,6 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.component.css" />
+    <Content Include="app\categorias.component.html" />
+    <Content Include="app\categorias.component.css" />
+    <Content Include="app\categoria-detail.component.html" />
+    <Content Include="app\categoria-detail.component.css" />
     <Content Include="app\atributo-detail.component.css" />
     <Content Include="app\atributo-detail.component.html" />
     <Content Include="app\atributos.component.css" />
@@ -149,6 +153,8 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\categorias.component.ts" />
+    <TypeScriptCompile Include="app\categoria-detail.component.ts" />
     <TypeScriptCompile Include="app\categoria.service.ts" />
     <TypeScriptCompile Include="app\tipo.service.ts" />
     <TypeScriptCompile Include="app\categoria.ts" />
