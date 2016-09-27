@@ -11,7 +11,7 @@ namespace GestorAtributos.db
 {
     public class GestorDB : DbContext
     {
-        public GestorDB(): base("c0415egrupo")
+        public GestorDB(): base("GestorDB")
         {
             Database.SetInitializer(new GestorDBInitializer());
         }
