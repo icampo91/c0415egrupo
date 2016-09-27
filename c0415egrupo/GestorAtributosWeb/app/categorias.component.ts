@@ -36,7 +36,7 @@ export class CategoriasComponent implements OnInit {
 
   delete(categoria: Categoria): void {
       this.categoriaService
-          .delete(categoria.IdCategoria)
+          .delete(categoria.id)
           .then(() => {
           this.categorias = this.categorias.filter(a => a !== categoria);
           if (this.selectedCategoria === categoria) { this.selectedCategoria = null; }
@@ -52,6 +52,6 @@ export class CategoriasComponent implements OnInit {
   }
 
   gotoDetail(categoria: Categoria): void {
-      this.router.navigate(['/detailCategoria', categoria.IdCategoria]);
+      this.router.navigate(['/detailCategoria', categoria.id]);
   }
 }
