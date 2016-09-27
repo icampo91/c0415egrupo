@@ -1,8 +1,8 @@
 export class Atributo {
-    IdAtributo: number;
-    CodAtributo: string;
-    Nombre: string;
-    Descripcion: string;
-    IdTipo: number;
-    IdCategoria: number;
+    id: number;
+    codigo: string;
+    nombre: string;
+    descripcion: string;
+    tipoID: number;
+    categoriaID: number;
 }

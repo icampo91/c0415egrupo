@@ -55,7 +55,7 @@ export class AtributosComponent implements OnInit {
 
   delete(atributo: Atributo): void {
       this.atributoService
-          .delete(atributo.IdAtributo)
+          .delete(atributo.id)
           .then(() => {
           this.atributos = this.atributos.filter(a => a !== atributo);
           if (this.selectedAtributo === atributo) { this.selectedAtributo = null; }
@@ -72,7 +72,7 @@ export class AtributosComponent implements OnInit {
       this.selectedAtributo = atributo;
   }
 
-  gotoDetail(id: number): void {
-      this.router.navigate(['/detail',id]);
+  gotoDetail(atributo: Atributo): void {
+      this.router.navigate(['/detail', atributo.id]);
   }
 }

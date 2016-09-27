@@ -22,7 +22,7 @@ export class CategoriaService {
 
   getCategoria(id: number): Promise<Categoria> {
       return this.getCategorias()
-          .then(categorias => categorias.find(categoria => categoria.IdCategoria === id));
+          .then(categorias => categorias.find(categoria => categoria.id === id));
   }
 
   delete(id: number): Promise<void> {
@@ -42,7 +42,7 @@ export class CategoriaService {
   }
 
   update(categoria: Categoria): Promise<Categoria> {
-      const url = `${this.categoriasUrl}/${categoria.IdCategoria}`;
+      const url = `${this.categoriasUrl}/${categoria.id}`;
       return this.http
           .put(url, JSON.stringify(categoria), {headers: this.headers})
         .toPromise()

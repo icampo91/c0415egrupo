@@ -22,7 +22,7 @@ export class AtributoService {
 
   getAtributo(id: number): Promise<Atributo> {
       return this.getAtributos()
-          .then(atributos => atributos.find(atributo => atributo.IdAtributo === id));
+          .then(atributos => atributos.find(atributo => atributo.id === id));
   }
 
   delete(id: number): Promise<void> {
@@ -42,7 +42,7 @@ export class AtributoService {
   }
 
   update(atributo: Atributo): Promise<Atributo> {
-      const url = `${this.atributosUrl}/${atributo.IdAtributo}`;
+      const url = `${this.atributosUrl}/${atributo.id}`;
       return this.http
         .put(url, JSON.stringify(atributo), {headers: this.headers})
         .toPromise()

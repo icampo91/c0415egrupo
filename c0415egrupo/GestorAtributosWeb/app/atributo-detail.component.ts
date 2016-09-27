@@ -3,7 +3,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
 import { Atributo }        from './atributo';
+import { Tipo }        from './tipo';
+import { Categoria }        from './categoria';
 import { AtributoService } from './atributo.service';
+import { TipoService } from './tipo.service';
+import { CategoriaService } from './categoria.service';
 
 @Component({
   moduleId: module.id,
@@ -12,20 +16,38 @@ import { AtributoService } from './atributo.service';
   styleUrls: [ 'atributo-detail.component.css' ]
 })
 export class AtributoDetailComponent implements OnInit {
-  atributo: Atributo;
+    atributo: Atributo;
+    tipos: Tipo[];
+    categorias: Categoria[];
 
   constructor(
-    private atributoService: AtributoService,
+      private atributoService: AtributoService,
+      private tipoService: TipoService,
+      private categoriaService: CategoriaService,
     private route: ActivatedRoute,
     private location: Location
-  ) {}
+    ) { }
+
+  getCategorias(): void {
+      this.categoriaService
+          .getCategorias()
+          .then(categorias => this.categorias = categorias);
+  }
+
+  getTipos(): void {
+      this.tipoService
+          .getTipos()
+          .then(tipos => this.tipos = tipos);
+  }
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       this.atributoService.getAtributo(id)
           .then(atributo => this.atributo = atributo);
-    });
+      });
+    this.getCategorias();
+    this.getTipos();
   }
 
   save(): void {

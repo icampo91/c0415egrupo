@@ -1,11 +1,29 @@
-<div *ngIf="hero">
-  <h2>{{atributo.IdAtributo}} details!</h2>
+<div *ngIf="atributo && tipos && categorias">
+  <h2>{{atributo.id}} details!</h2>
+    <div>
+        <label>C&oacute;digo: </label>
+        <input [(ngModel)]="atributo.codigo" placeholder="name" />
+    </div>
   <div>
-    <label>id: </label>{{atributo.id}}</div>
-  <div>
-    <label>name: </label>
+    <label>Nombre: </label>
     <input [(ngModel)]="atributo.nombre" placeholder="name" />
    </div>
+    <div>
+        <label>Tipo: </label>
+        <select [(ngModel)]="atributo.tipoID">
+            <option *ngFor="let tipo of tipos" [value]="tipo.id">
+                {{tipo.nombre}}
+            </option>
+        </select>
+    </div>
+    <div>
+        <label>Categor&iacute;a: </label>
+        <select [(ngModel)]="atributo.categoriaID">
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">
+                {{categoria.nombre}}
+            </option>
+        </select>
+    </div>
   <button (click)="goBack()">Back</button>
   <button (click)="save()">Save</button>
 </div>
