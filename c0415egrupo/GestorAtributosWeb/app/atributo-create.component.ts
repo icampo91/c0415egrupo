@@ -11,7 +11,7 @@ import { CategoriaService } from './categoria.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-hero-detail',
+  selector: 'my-atributo-detail',
   templateUrl: 'atributo-detail.component.html',
   styleUrls: [ 'atributo-detail.component.css' ]
 })

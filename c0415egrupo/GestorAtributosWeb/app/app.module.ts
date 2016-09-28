@@ -23,6 +23,8 @@ import { CategoriaService }          from './categoria.service';
 import { CategoriaCreateComponent }  from './categoria-create.component';
 
 import { AtributoSearchComponent }  from './atributo-search.component';
+import { AtributoSearchService }  from './atributo-search.service';
+
 
 import { routing }              from './app.routing';
 
@@ -47,6 +49,7 @@ import { routing }              from './app.routing';
       AtributoService,
       TipoService,
       CategoriaService,
+      AtributoSearchService,
   ],
   bootstrap: [ AppComponent ]
 })

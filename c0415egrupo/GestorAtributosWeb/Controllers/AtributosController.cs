@@ -53,5 +53,17 @@ namespace GestorAtributosWeb.Controllers
         {
             return sut.Delete(id);
         }
+
+        public ICollection<AtributoVO> Get([FromUri]string codigo)
+        {
+            if(codigo != null && codigo != "")
+            {
+                return sut.Get(codigo.ToUpper());
+            }
+            else
+            {
+                return sut.Get();
+            }          
+        }
     }
 }

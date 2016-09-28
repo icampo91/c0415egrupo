@@ -5,6 +5,10 @@
     </div>
     <div class="row">
         <atributo-search class="col-lg-5"></atributo-search>
+        <div class="col-lg-5">
+            <h4>Filtrar Lista</h4>
+            <input #filterBox id="filter-box" (keyup)="filtrar(filterBox.value)" />
+        </div>
     </div>
     <table class="table table-striped">
         <thead>

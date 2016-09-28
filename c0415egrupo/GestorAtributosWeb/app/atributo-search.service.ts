@@ -12,7 +12,14 @@ export class AtributoSearchService {
 
     search(term: string): Observable<Atributo[]> {
         return this.http
-            .get(`api/Atributos/?codigo=${term}`, { headers: this.headers })
+            .get(`api/atributos/?codigo=${term}`, { headers: this.headers })
             .map((r: Response) => r.json() as Atributo[]);
+    }
+
+    filter(codigo: string): Promise<Atributo[]> {
+        return this.http
+            .get(`api/atributos/?codigo=${codigo}`, { headers: this.headers })
+            .toPromise()
+            .then(response => response.json() as Atributo[]);
     }
 }

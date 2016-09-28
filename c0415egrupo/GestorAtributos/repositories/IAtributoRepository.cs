@@ -8,6 +8,7 @@ namespace GestorAtributos.repositories
         bool Delete(int _id);
         Atributo Get(int _id);
         ICollection<Atributo> Get();
+        ICollection<Atributo> Get(string _codigo);
         Atributo Put(Atributo _atributo);
         Atributo Post(Atributo _atributo);
     }

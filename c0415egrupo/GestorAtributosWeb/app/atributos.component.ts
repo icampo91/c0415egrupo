@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
-import { Atributo }                from './atributo';
-import { Tipo }                    from './tipo';
+import { Atributo }                 from './atributo';
+import { Tipo }                     from './tipo';
 import { Categoria }                from './categoria';
-import { AtributoService }         from './atributo.service';
-import { TipoService }         from './tipo.service';
+import { AtributoService }          from './atributo.service';
+import { TipoService }              from './tipo.service';
 import { CategoriaService }         from './categoria.service';
+import { AtributoSearchService }    from './atributo-search.service';
+
 
 @Component({
   moduleId: module.id,
@@ -26,6 +28,7 @@ export class AtributosComponent implements OnInit {
       private atributoService: AtributoService,
       private tipoService: TipoService,
       private categoriaService: CategoriaService,
+      private atributoSearchService: AtributoSearchService,
       private router: Router) { }
 
   getAtributos(): void {
@@ -75,6 +78,12 @@ export class AtributosComponent implements OnInit {
       this.getAtributos();
       this.getTipos();
       this.getCategorias();
+  }
+
+  filtrar(codigo: string) {
+      this.atributoSearchService
+          .filter(codigo)
+          .then(atributos => this.atributos = atributos);
   }
 
   cancelModal(): void {

@@ -54,5 +54,16 @@ namespace GestorAtributos.servicio
             }
             return res;
         }
+
+        public ICollection<AtributoVO> Get(string _codigo)
+        {
+            ICollection<AtributoVO> res = new List<AtributoVO>();
+            foreach (Atributo v in atributoRepository.Get(_codigo))
+            {
+                AtributoVO anadir = atributoUtil.ConvierteEntity2VOTotal(v);
+                res.Add(anadir);
+            }
+            return res;
+        }
     }
 }

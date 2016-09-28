@@ -11,7 +11,7 @@ import { CategoriaService } from './categoria.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-hero-detail',
+  selector: 'my-atributo-detail',
   templateUrl: 'atributo-detail.component.html',
   styleUrls: [ 'atributo-detail.component.css' ]
 })
@@ -92,6 +92,14 @@ export class AtributoDetailComponent implements OnInit {
   cancelModal(): void {
       this.atributoBorrar = null;
       this.modalBorrar = false;
+  }
+
+  modoModificar(): void {
+      this.modificar = true;
+  }
+
+  modoVisualizar(): void {
+      this.modificar = false;
   }
 
   goBack(): void {
