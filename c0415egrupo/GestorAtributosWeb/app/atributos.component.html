@@ -1,5 +1,11 @@
 <div *ngIf="!modalBorrar && categorias && tipos && atributos" class="container">
-    <h2>Listado de Atributos </h2><button (click)="gotoCreate()"><span class="glyphicon glyphicon-plus"></span></button><atributo-search></atributo-search>
+    <div class="row">
+        <h2>Listado de Atributos </h2>
+        <button class="col-lg-1" (click)="gotoCreate()"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+    <div class="row">
+        <atributo-search class="col-lg-5"></atributo-search>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
