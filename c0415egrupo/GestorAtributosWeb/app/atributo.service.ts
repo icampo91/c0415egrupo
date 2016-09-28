@@ -9,7 +9,7 @@ import { Atributo } from './atributo';
 export class AtributoService {
 
     private headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json'});
-  private atributosUrl = 'api/atributos';  // URL to web api
+  private atributosUrl = 'api/atributos';
 
   constructor(private http: Http) { }
 
@@ -51,7 +51,7 @@ export class AtributoService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 }

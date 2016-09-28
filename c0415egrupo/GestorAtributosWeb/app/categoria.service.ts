@@ -9,7 +9,7 @@ import { Categoria } from './categoria';
 export class CategoriaService {
 
     private headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json'});
-  private categoriasUrl = 'api/categorias';  // URL to web api
+  private categoriasUrl = 'api/categorias';
 
   constructor(private http: Http) { }
 
@@ -51,7 +51,7 @@ export class CategoriaService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 }

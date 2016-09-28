@@ -8,7 +8,7 @@ import { CategoriaService } from './categoria.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-hero-detail',
+  selector: 'my-categoria-detail',
   templateUrl: 'categoria-detail.component.html',
   styleUrls: [ 'categoria-detail.component.css' ]
 })
