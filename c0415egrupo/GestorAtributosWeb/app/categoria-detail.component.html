@@ -6,13 +6,26 @@
     <label>Nombre: </label>
     <input [(ngModel)]="categoria.nombre" placeholder="Nombre" />
    </div>
-  <button (click)="goBack()">Atras</button>
-  <button (click)="save()">Guardar</button>
+    <button (click)="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> Atras</button>
+    <button *ngIf="modificar" (click)="save()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+</div>
+<div *ngIf="!(!modalBorrar && !faltanDatos)" style="position: fixed; margin-top: 40vh; margin-left: 40vw; width: 350px; height: 190px; top: 0; left: 0; display:block;">
+    <h3>Cargando datos...</h3>
 </div>
 
+<div *ngIf="faltanDatos" style="position: fixed; padding:10px; margin-top: 20vh; margin-left: 35vw; width: 350px; height: 190px; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; border: #333333 3px solid; background-color: #FAFAFA; color: #000000; display:block;">
+    <h3>Faltan datos por introducir o hay algun dato incorrecto</h3>
+    <button (click)="cancelModal()">
+        Aceptar
+    </button>
+</div>
 
-<!-- 
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
+<div *ngIf="modalBorrar" style="position: fixed; padding:10px; margin-top: 20vh; margin-left: 35vw; width: 350px; height: 190px; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; border: #333333 3px solid; background-color: #FAFAFA; color: #000000; display:block;">
+    <h3>&iquest;Est&aacute; seguro de que desea eliminar la categoria {{categoria.nombre}}?</h3>
+    <button (click)="delete()" style="margin-left: 20px">
+        Aceptar
+    </button>
+    <button (click)="cancelModal()">
+        Cancelar
+    </button>
+</div>

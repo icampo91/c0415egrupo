@@ -20,6 +20,7 @@ import { TipoService }          from './tipo.service';
 import { CategoriasComponent }      from './categorias.component';
 import { CategoriaDetailComponent }  from './categoria-detail.component';
 import { CategoriaService }          from './categoria.service';
+import { CategoriaCreateComponent }  from './categoria-create.component';
 
 import { AtributoSearchComponent }  from './atributo-search.component';
 
@@ -39,6 +40,7 @@ import { routing }              from './app.routing';
     AtributosComponent,
     CategoriaDetailComponent,
     CategoriasComponent,
+    CategoriaCreateComponent,
     AtributoSearchComponent,
   ],
   providers: [

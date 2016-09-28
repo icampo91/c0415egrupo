@@ -155,6 +155,7 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\categoria-create.component.ts" />
     <TypeScriptCompile Include="app\atributo-create.component.ts" />
     <TypeScriptCompile Include="app\atributo-search.service.ts" />
     <TypeScriptCompile Include="app\atributo-search.component.ts" />

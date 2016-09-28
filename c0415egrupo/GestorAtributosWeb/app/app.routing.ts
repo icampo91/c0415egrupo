@@ -7,6 +7,8 @@ import { AtributoCreateComponent } from './atributo-create.component';
 
 import { CategoriasComponent }     from './categorias.component';
 import { CategoriaDetailComponent } from './categoria-detail.component';
+import { CategoriaCreateComponent } from './categoria-create.component';
+
 
 const appRoutes: Routes = [
   {
@@ -27,8 +29,12 @@ const appRoutes: Routes = [
     component: AtributosComponent
   },
   {
-      path: 'detailCategoria/:id',
+      path: 'detailCategoria/:tipo/:id',
       component: CategoriaDetailComponent
+  },
+  {
+      path: 'detailCategoria',
+      component: CategoriaCreateComponent
   },
   {
       path: 'categorias',

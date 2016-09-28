@@ -13,6 +13,8 @@ import { CategoriaService }         from './categoria.service';
 export class CategoriasComponent implements OnInit {
     categorias: Categoria[];
     selectedCategoria: Categoria;
+    categoriaBorrar: Categoria;
+    modalBorrar: boolean;
 
   constructor(
       private categoriaService: CategoriaService,
@@ -33,17 +35,27 @@ export class CategoriasComponent implements OnInit {
         this.selectedCategoria = null;
       });
   }
+  showBorrarModal(categoria: Categoria) {
+      this.categoriaBorrar = categoria;
+      this.modalBorrar = true;
+  }
+  cancelModal(): void {
+      this.categoriaBorrar = null;
+      this.modalBorrar = false;
+  }
 
-  delete(categoria: Categoria): void {
+  delete(): void {
       this.categoriaService
-          .delete(categoria.id)
+          .delete(this.categoriaBorrar.id)
           .then(() => {
-          this.categorias = this.categorias.filter(a => a !== categoria);
-          if (this.selectedCategoria === categoria) { this.selectedCategoria = null; }
+              this.categorias = this.categorias.filter(a => a !== this.categoriaBorrar);
+              if (this.selectedCategoria === this.categoriaBorrar) { this.selectedCategoria = null; }
+              this.modalBorrar = false;
         });
   }
 
   ngOnInit(): void {
+      this.modalBorrar = false;
       this.getCategorias();
   }
 
@@ -52,6 +64,13 @@ export class CategoriasComponent implements OnInit {
   }
 
   gotoDetail(categoria: Categoria): void {
-      this.router.navigate(['/detailCategoria', categoria.id]);
+      this.router.navigate(['/detailCategoria', 'v', categoria.id]);
+  }
+
+  gotoModify(categoria: Categoria): void {
+      this.router.navigate(['/detailCategoria', 'm', categoria.id]);
+  }
+  gotoCreate(): void {
+      this.router.navigate(['/detailCategoria']);
   }
 }
