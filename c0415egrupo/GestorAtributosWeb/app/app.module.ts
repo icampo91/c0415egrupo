@@ -21,6 +21,8 @@ import { CategoriasComponent }      from './categorias.component';
 import { CategoriaDetailComponent }  from './categoria-detail.component';
 import { CategoriaService }          from './categoria.service';
 
+import { AtributoSearchComponent }  from './atributo-search.component';
+
 import { routing }              from './app.routing';
 
 @NgModule({
@@ -32,11 +34,12 @@ import { routing }              from './app.routing';
   ],
   declarations: [
     AppComponent,
-      AtributoDetailComponent,
-      AtributoCreateComponent,
+    AtributoDetailComponent,
+    AtributoCreateComponent,
     AtributosComponent,
     CategoriaDetailComponent,
     CategoriasComponent,
+    AtributoSearchComponent,
   ],
   providers: [
       AtributoService,
