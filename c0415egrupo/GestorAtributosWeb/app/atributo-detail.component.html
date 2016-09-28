@@ -1,15 +1,19 @@
-<div *ngIf="tipos && categorias && !faltanDatos">
+<div *ngIf="tipos && categorias && !faltanDatos && !modalBorrar" class="container">
   <h2 *ngIf="atributo">Detalle del atributo {{atributo.codigo}}</h2>
   <h2 *ngIf="!atributo">Nuevo atributo</h2>
-    <div>
+    <div class="row">
         <label>C&oacute;digo: </label>
-        <input [(ngModel)]="atributo.codigo" placeholder="name" [disabled]="!modificar"/>
+        <input [(ngModel)]="atributo.codigo" placeholder="C&oacute;digo" [disabled]="!modificar"/>
       </div>
-    <div>
-      <label>Nombre: </label>
-      <input [(ngModel)]="atributo.nombre" placeholder="name" [disabled]="!modificar"/>
+    <div class="row">
+        <label>Nombre: </label>
+        <input [(ngModel)]="atributo.nombre" placeholder="Nombre" [disabled]="!modificar" />
     </div>
-    <div>
+    <div class="row">
+        <label>Descripci&oacute;n: </label>
+        <input [(ngModel)]="atributo.descripcion" placeholder="descripci&oacute;n" [disabled]="!modificar" />
+    </div>
+    <div class="row">
         <label>Tipo: </label>
         <select [(ngModel)]="atributo.tipoID" [disabled]="!modificar">
             <option *ngFor="let tipo of tipos" [value]="tipo.id">
@@ -17,7 +21,7 @@
             </option>
         </select>
     </div>
-    <div>
+    <div class="row">
         <label>Categor&iacute;a: </label>
         <select [(ngModel)]="atributo.categoriaID" [disabled]="!modificar">
             <option *ngFor="let categoria of categorias" [value]="categoria.id">
@@ -27,9 +31,10 @@
     </div>
   <button (click)="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> Atras</button>
   <button *ngIf="modificar" (click)="save()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+  <button *ngIf="modificar && !modoCrear" (click)="showBorrarModal(atributo)"><span class="glyphicon glyphicon-floppy-disk"></span> Borrar</button>
 </div>
 
-<div *ngIf="!(!faltanDatos && tipos && categorias)" style="position: fixed; margin-top: 40vh; margin-left: 40vw; width: 350px; height: 190px; top: 0; left: 0; display:block;">
+<div *ngIf="!(!modalBorrar && !faltanDatos && tipos && categorias)" style="position: fixed; margin-top: 40vh; margin-left: 40vw; width: 350px; height: 190px; top: 0; left: 0; display:block;">
     <h3>Cargando datos...</h3>
 </div>
 
@@ -40,3 +45,12 @@
     </button>
 </div>
 
+<div *ngIf="modalBorrar" style="position: fixed; padding:10px; margin-top: 20vh; margin-left: 35vw; width: 350px; height: 190px; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; border: #333333 3px solid; background-color: #FAFAFA; color: #000000; display:block;">
+    <h3>&iquest;Est&aacute; seguro de que desea eliminar el atributo {{atributoBorrar.codigo}}?</h3>
+    <button (click)="delete()" style="margin-left: 20px">
+        Aceptar
+    </button>
+    <button (click)="cancelModal()">
+        Cancelar
+    </button>
+</div>

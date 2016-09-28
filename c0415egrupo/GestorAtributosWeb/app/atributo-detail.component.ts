@@ -19,8 +19,11 @@ export class AtributoDetailComponent implements OnInit {
     atributo = new Atributo();
     tipos: Tipo[];
     categorias: Categoria[];
+    atributoBorrar: Atributo;
     modificar: boolean;
     modoCrear: boolean;
+    faltanDatos: boolean;
+    modalBorrar: boolean;
 
   constructor(
       private atributoService: AtributoService,
@@ -44,6 +47,9 @@ export class AtributoDetailComponent implements OnInit {
 
   ngOnInit(): void {
       this.modificar = true;
+      this.faltanDatos = false;
+      this.modalBorrar = false;
+      this.modoCrear = false;
       this.atributo = new Atributo();
 
       this.route.params.forEach((params: Params) => {
@@ -60,8 +66,32 @@ export class AtributoDetailComponent implements OnInit {
   }
 
   save(): void {
-      this.atributoService.update(this.atributo)
-      .then(() => this.goBack());
+      if (this.atributo.nombre.trim() == "" || this.atributo.codigo.trim() == "" || this.atributo.descripcion.trim() == "") {
+          this.faltanDatos = true;
+      } else {
+          this.atributoService.update(this.atributo)
+              .then(() => this.goBack());
+      }
+  }
+
+  showBorrarModal(atributo: Atributo): void {
+      this.atributoBorrar = atributo;
+      this.modalBorrar = true;
+  }
+
+  delete(): void {
+      this.atributoService
+          .delete(this.atributoBorrar.id)
+          .then(() => {
+              if (this.atributo === this.atributoBorrar) { this.atributo = null; }
+              this.modalBorrar = false;
+              this.goBack();
+          });
+  }
+
+  cancelModal(): void {
+      this.atributoBorrar = null;
+      this.modalBorrar = false;
   }
 
   goBack(): void {

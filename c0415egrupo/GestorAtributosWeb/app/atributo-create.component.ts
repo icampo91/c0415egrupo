@@ -46,6 +46,7 @@ export class AtributoCreateComponent implements OnInit {
   ngOnInit(): void {
       this.modificar = true;
       this.faltanDatos = false;
+      this.modoCrear = true;
       this.atributo = new Atributo();
     this.getCategorias();
     this.getTipos();
