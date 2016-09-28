@@ -19,6 +19,8 @@ export class AtributosComponent implements OnInit {
     tipos: Tipo[];
     categorias: Categoria[];
     selectedAtributo: Atributo;
+    atributoBorrar: Atributo;
+    modalBorrar: boolean;
 
   constructor(
       private atributoService: AtributoService,
@@ -44,6 +46,11 @@ export class AtributosComponent implements OnInit {
           .then(categorias => this.categorias = categorias);
   }
 
+  showBorrarModal(atributo: Atributo) {
+      this.atributoBorrar = atributo;
+      this.modalBorrar = true;
+  }
+
   add(atributo: Atributo): void {
     if (!atributo) { return; }
     this.atributoService.create(atributo)
@@ -53,19 +60,26 @@ export class AtributosComponent implements OnInit {
       });
   }
 
-  delete(atributo: Atributo): void {
+  delete(): void {
       this.atributoService
-          .delete(atributo.id)
+          .delete(this.atributoBorrar.id)
           .then(() => {
-          this.atributos = this.atributos.filter(a => a !== atributo);
-          if (this.selectedAtributo === atributo) { this.selectedAtributo = null; }
+          this.atributos = this.atributos.filter(a => a !== this.atributoBorrar);
+          if (this.selectedAtributo === this.atributoBorrar) { this.selectedAtributo = null; }
+          this.modalBorrar = false;
         });
   }
 
   ngOnInit(): void {
+      this.modalBorrar = false;
       this.getAtributos();
       this.getTipos();
       this.getCategorias();
+  }
+
+  cancelModal(): void {
+      this.atributoBorrar = null;
+      this.modalBorrar = false;
   }
 
   onSelect(atributo: Atributo): void {

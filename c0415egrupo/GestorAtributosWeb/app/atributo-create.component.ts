@@ -15,12 +15,13 @@ import { CategoriaService } from './categoria.service';
   templateUrl: 'atributo-detail.component.html',
   styleUrls: [ 'atributo-detail.component.css' ]
 })
-export class AtributoDetailComponent implements OnInit {
-    atributo = new Atributo();
+export class AtributoCreateComponent implements OnInit {
+    atributo: Atributo;
     tipos: Tipo[];
     categorias: Categoria[];
     modificar: boolean;
     modoCrear: boolean;
+    faltanDatos: boolean;
 
   constructor(
       private atributoService: AtributoService,
@@ -44,24 +45,29 @@ export class AtributoDetailComponent implements OnInit {
 
   ngOnInit(): void {
       this.modificar = true;
+      this.faltanDatos = false;
       this.atributo = new Atributo();
-
-      this.route.params.forEach((params: Params) => {
-        let tipo = params['tipo'];
-        let id = +params['id'];        
-        if (tipo == 'v') {
-            this.modificar = false;
-        }
-        this.atributoService.getAtributo(id)
-           .then(atributo => this.atributo = atributo);
-      });
     this.getCategorias();
     this.getTipos();
   }
 
   save(): void {
-      this.atributoService.update(this.atributo)
-      .then(() => this.goBack());
+      if (this.atributo &&
+          (this.atributo.nombre && this.atributo.nombre.trim() != "") &&
+          (this.atributo.codigo && this.atributo.codigo.trim() != "") &&
+          (this.atributo.descripcion && this.atributo.descripcion.trim() != "") &&
+          this.atributo.categoriaID && this.atributo.tipoID) {
+
+          this.atributoService.create(this.atributo)
+              .then(() => this.goBack());
+            
+      } else {
+          this.faltanDatos = true;
+      }
+  }
+
+  cancelModal(): void {
+      this.faltanDatos = false;
   }
 
   goBack(): void {

@@ -1,4 +1,4 @@
-<div *ngIf="tipos && categorias">
+<div *ngIf="tipos && categorias && !faltanDatos">
   <h2 *ngIf="atributo">Detalle del atributo {{atributo.codigo}}</h2>
   <h2 *ngIf="!atributo">Nuevo atributo</h2>
     <div>
@@ -29,9 +29,14 @@
   <button *ngIf="modificar" (click)="save()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 </div>
 
+<div *ngIf="!(!faltanDatos && tipos && categorias)" style="position: fixed; margin-top: 40vh; margin-left: 40vw; width: 350px; height: 190px; top: 0; left: 0; display:block;">
+    <h3>Cargando datos...</h3>
+</div>
 
-<!-- 
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
+<div *ngIf="faltanDatos" style="position: fixed; padding:10px; margin-top: 20vh; margin-left: 35vw; width: 350px; height: 190px; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; border: #333333 3px solid; background-color: #FAFAFA; color: #000000; display:block;">
+    <h3>Faltan datos por introducir o hay algun dato incorrecto</h3>
+    <button (click)="cancelModal()">
+        Aceptar
+    </button>
+</div>
+

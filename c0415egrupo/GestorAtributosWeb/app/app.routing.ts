@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AtributosComponent }     from './atributos.component';
 import { AtributoDetailComponent } from './atributo-detail.component';
+import { AtributoCreateComponent } from './atributo-create.component';
 
 import { CategoriasComponent }     from './categorias.component';
 import { CategoriaDetailComponent } from './categoria-detail.component';
@@ -14,12 +15,12 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'detail/:tipo/:id',
-    component: AtributoDetailComponent
+    path: 'detail',
+    component: AtributoCreateComponent
   },
   {
-      path: 'detail',
-      component: AtributoDetailComponent
+    path: 'detail/:tipo/:id',
+    component: AtributoDetailComponent
   },
   {
     path: 'atributos',
