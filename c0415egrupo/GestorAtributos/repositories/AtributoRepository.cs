@@ -70,5 +70,24 @@ namespace GestorAtributos.repositories
             }
             return res;
         }
+
+        public ICollection<Atributo> Get(string _codigo)
+        {
+            ICollection<Atributo> res = null;
+            List<Atributo> res2 = null;
+            using (var gestorDB = new GestorDB())
+            {
+                res = gestorDB.atributos.Include("Tipo").Include("Categoria").ToList<Atributo>();
+                res2 = new List<Atributo>();
+                foreach (Atributo a in res)
+                {
+                    if (a.codigo.ToUpper().Contains(_codigo))
+                    {
+                        res2.Add(a);
+                    }
+                }
+            }
+            return res2;
+        }
     }
 }
