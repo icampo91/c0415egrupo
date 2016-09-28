@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.component.css" />
+    <Content Include="app\atributo-search.component.css" />
+    <Content Include="app\atributo-search.component.html" />
     <Content Include="app\categorias.component.html" />
     <Content Include="app\categorias.component.css" />
     <Content Include="app\categoria-detail.component.html" />
@@ -154,6 +156,8 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routing.ts" />
     <TypeScriptCompile Include="app\atributo-create.component.ts" />
+    <TypeScriptCompile Include="app\atributo-search.service.ts" />
+    <TypeScriptCompile Include="app\atributo-search.component.ts" />
     <TypeScriptCompile Include="app\categorias.component.ts" />
     <TypeScriptCompile Include="app\categoria-detail.component.ts" />
     <TypeScriptCompile Include="app\categoria.service.ts" />
