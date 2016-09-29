@@ -5,7 +5,7 @@
     <label>id: </label>{{categoria.id}}</div>
   <div>
     <label>Nombre: </label>
-    <input [(ngModel)]="categoria.nombre" placeholder="Nombre" [disabled]="!modificar"/>
+    <input id="txtNombre" [(ngModel)]="categoria.nombre" placeholder="Nombre" [disabled]="!modificar"/>
    </div>
     <button (click)="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> Atras</button>
     <button *ngIf="modificar" (click)="save()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>

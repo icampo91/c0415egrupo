@@ -30,7 +30,7 @@ namespace GestorAtributosWeb.Tests
             var thread = new Thread(StartIisExpress) { IsBackground = true };
 
             thread.Start();
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
 
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             baseURL = "http://localhost:" + Port + "/";
@@ -41,7 +41,7 @@ namespace GestorAtributosWeb.Tests
         public void TestCategoriaCrear()
         {
             driver.Navigate().GoToUrl(baseURL);
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
             driver.FindElement(By.LinkText("Categorias")).Click();
             driver.FindElement(By.CssSelector("button.col-lg-1")).Click();
             driver.FindElement(By.XPath("//input")).Clear();
@@ -55,22 +55,23 @@ namespace GestorAtributosWeb.Tests
         public void TestCategoriaModificar()
         {
             driver.Navigate().GoToUrl(baseURL);
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
             driver.FindElement(By.LinkText("Categorias")).Click();
+            Thread.Sleep(500);
             driver.FindElement(By.XPath("//tr[2]/td[3]/button[2]")).Click();
             driver.FindElement(By.XPath("//input")).Clear();
             driver.FindElement(By.XPath("//input")).SendKeys("Informes editado");
             driver.FindElement(By.XPath("//button[2]")).Click();
             Thread.Sleep(2000);
-            driver.FindElement(By.XPath("//tr[2]/td[3]/button")).Click();
-            Assert.Equals(By.XPath("//input").ToString(), "Informes editado");
+            string text = driver.FindElement(By.XPath("//tr[2]/td[2]")).Text;
+            Assert.IsTrue(text == "Informes editado");
         }
 
         [TestMethod]
         public void TestCategoriaBorrarError()
         {
             driver.Navigate().GoToUrl(baseURL);
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
             driver.FindElement(By.LinkText("Categorias")).Click();
             driver.FindElement(By.XPath("//button[3]")).Click();
             Thread.Sleep(500);
@@ -78,14 +79,14 @@ namespace GestorAtributosWeb.Tests
             Thread.Sleep(500);
             driver.FindElement(By.CssSelector("button")).Click();
             Thread.Sleep(500);
-            Assert.IsFalse(IsElementPresent(By.XPath("//button[3]")));
+            Assert.IsTrue(IsElementPresent(By.XPath("//button[3]")));
         }
 
         [TestMethod]
         public void TestCategoriaBorrar()
         {
             driver.Navigate().GoToUrl(baseURL);
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
             driver.FindElement(By.LinkText("Categorias")).Click();
             driver.FindElement(By.CssSelector("button.col-lg-1")).Click();
             driver.FindElement(By.XPath("//input")).Clear();
