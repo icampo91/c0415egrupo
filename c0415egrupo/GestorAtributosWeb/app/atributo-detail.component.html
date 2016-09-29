@@ -30,8 +30,8 @@
         </select>
     </div>
   <button (click)="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> Atras</button>
-  <button *ngIf="!modificar" (click)="modoModificar()"><span class="glyphicon glyphicon-pencil"></span></button>
-  <button *ngIf="modificar" (click)="modoVisualizar()"><span class="glyphicon glyphicon-eye-open"></span></button>
+  <button *ngIf="!modificar && !modoCrear" (click)="modoModificar()"><span class="glyphicon glyphicon-pencil"></span></button>
+  <button *ngIf="modificar && !modoCrear" (click)="modoVisualizar()"><span class="glyphicon glyphicon-eye-open"></span></button>
   <button *ngIf="modificar" (click)="save()"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
   <button *ngIf="modificar && !modoCrear" (click)="showBorrarModal(atributo)"><span class="glyphicon glyphicon-floppy-disk"></span> Borrar</button>
 </div>
