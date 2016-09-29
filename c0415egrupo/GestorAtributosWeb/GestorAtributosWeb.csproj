@@ -107,19 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\app.component.css" />
-    <Content Include="app\atributo-search.component.css" />
-    <Content Include="app\atributo-search.component.html" />
-    <Content Include="app\categorias.component.html" />
-    <Content Include="app\categorias.component.css" />
-    <Content Include="app\categoria-detail.component.html" />
-    <Content Include="app\categoria-detail.component.css" />
-    <Content Include="app\atributo-detail.component.css" />
-    <Content Include="app\atributo-detail.component.html" />
-    <Content Include="app\atributos.component.css" />
-    <Content Include="app\atributos.component.html" />
     <Content Include="Global.asax" />
-    <Content Include="index.html" />
     <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -136,9 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="package.json" />
-    <Content Include="tsconfig.json" />
-    <Content Include="typings.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,29 +134,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="app\app.component.spec.ts" />
-    <TypeScriptCompile Include="app\app.component.ts" />
-    <TypeScriptCompile Include="app\app.module.ts" />
-    <TypeScriptCompile Include="app\app.routing.ts" />
-    <TypeScriptCompile Include="app\categoria-create.component.ts" />
-    <TypeScriptCompile Include="app\atributo-create.component.ts" />
-    <TypeScriptCompile Include="app\atributo-search.service.ts" />
-    <TypeScriptCompile Include="app\atributo-search.component.ts" />
-    <TypeScriptCompile Include="app\categorias.component.ts" />
-    <TypeScriptCompile Include="app\categoria-detail.component.ts" />
-    <TypeScriptCompile Include="app\categoria.service.ts" />
-    <TypeScriptCompile Include="app\tipo.service.ts" />
-    <TypeScriptCompile Include="app\categoria.ts" />
-    <TypeScriptCompile Include="app\tipo.ts" />
-    <TypeScriptCompile Include="app\atributo-detail.component.ts" />
-    <TypeScriptCompile Include="app\atributo.service.ts" />
-    <TypeScriptCompile Include="app\atributo.ts" />
-    <TypeScriptCompile Include="app\atributos.component.ts" />
-    <TypeScriptCompile Include="app\in-memory-data.service.ts" />
-    <TypeScriptCompile Include="app\main.ts" />
-    <TypeScriptCompile Include="app\rxjs-extensions.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
