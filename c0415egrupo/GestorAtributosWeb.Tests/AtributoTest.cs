@@ -75,6 +75,7 @@ namespace GestorAtributosWeb.Tests
             Thread.Sleep(1000);
             new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
             Thread.Sleep(1000);
+            Assert.IsFalse(IsElementPresent(By.XPath("//tr[2]/td[5]/button[3]")));
         }
 
         [TestMethod]
@@ -97,6 +98,10 @@ namespace GestorAtributosWeb.Tests
             Thread.Sleep(1000);
             new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[3]"))).Click();
             Thread.Sleep(1000);
+            string text = driver.FindElement(By.XPath("//tr[2]/td[2]")).Text;
+            Thread.Sleep(1000);
+            Assert.IsTrue(text == "Atributo_21");
+
         }
 
         [TestMethod]
