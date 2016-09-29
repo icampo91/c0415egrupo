@@ -21,3 +21,8 @@ button.delete {
   background-color: gray !important;
   color:white;
 }
+
+input#filterBox {
+  width: 200px;
+  height: 25px;
+}
