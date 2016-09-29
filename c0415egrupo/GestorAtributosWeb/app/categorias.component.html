@@ -43,3 +43,10 @@
         Cancelar
     </button>
 </div>
+
+<div *ngIf="modalErrorBorrar" style="position: fixed; padding:10px; margin-top: 20vh; margin-left: 35vw; width: 350px; height: 190px; top: 0; left: 0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; border: #333333 3px solid; background-color: #FAFAFA; color: #000000; display:block;">
+    <h3>No se ha podido eliminar la categor&iacute;a {{categoriaBorrar.nombre}} porque ya est&aacute; asignada a un atributo.</h3>
+    <button (click)="cancelModal()">
+        Aceptar
+    </button>
+</div>

@@ -25,11 +25,11 @@ export class CategoriaService {
           .then(categorias => categorias.find(categoria => categoria.id === id));
   }
 
-  delete(id: number): Promise<void> {
+  delete(id: number): Promise<boolean> {
       let url = `${this.categoriasUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
-      .then(() => null)
+        .then(res => res.json())
       .catch(this.handleError);
   }
 

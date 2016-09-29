@@ -90,6 +90,7 @@ export class AtributoDetailComponent implements OnInit {
   }
 
   cancelModal(): void {
+      this.faltanDatos = false;
       this.atributoBorrar = null;
       this.modalBorrar = false;
   }

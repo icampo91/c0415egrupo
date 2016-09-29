@@ -15,6 +15,7 @@ export class CategoriasComponent implements OnInit {
     selectedCategoria: Categoria;
     categoriaBorrar: Categoria;
     modalBorrar: boolean;
+    modalErrorBorrar: boolean;
 
   constructor(
       private categoriaService: CategoriaService,
@@ -40,6 +41,7 @@ export class CategoriasComponent implements OnInit {
       this.modalBorrar = true;
   }
   cancelModal(): void {
+      this.modalErrorBorrar = false;
       this.categoriaBorrar = null;
       this.modalBorrar = false;
   }
@@ -47,14 +49,19 @@ export class CategoriasComponent implements OnInit {
   delete(): void {
       this.categoriaService
           .delete(this.categoriaBorrar.id)
-          .then(() => {
-              this.categorias = this.categorias.filter(a => a !== this.categoriaBorrar);
-              if (this.selectedCategoria === this.categoriaBorrar) { this.selectedCategoria = null; }
+          .then(borrado => {
+              if (borrado) {
+                  this.categorias = this.categorias.filter(a => a !== this.categoriaBorrar);
+                  if (this.selectedCategoria === this.categoriaBorrar) { this.selectedCategoria = null; }
+              } else {
+                  this.modalErrorBorrar = true;
+              }
               this.modalBorrar = false;
         });
   }
 
   ngOnInit(): void {
+      this.modalErrorBorrar = false;
       this.modalBorrar = false;
       this.getCategorias();
   }

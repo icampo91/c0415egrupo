@@ -1,6 +1,6 @@
 <div *ngIf="tipos && categorias && !faltanDatos && !modalBorrar" class="container">
-  <h2 *ngIf="atributo">Detalle del atributo {{atributo.codigo}}</h2>
-  <h2 *ngIf="!atributo">Nuevo atributo</h2>
+  <h2 *ngIf="!modoCrear">Detalle del atributo {{atributo.codigo}}</h2>
+  <h2 *ngIf="modoCrear">Nuevo atributo</h2>
     <div class="row">
         <label>C&oacute;digo: </label>
         <input [(ngModel)]="atributo.codigo" placeholder="C&oacute;digo" [disabled]="!modificar"/>
