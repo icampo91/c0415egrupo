@@ -68,6 +68,21 @@ namespace GestorAtributosWeb.Tests
         }
 
         [TestMethod]
+        public void TestCategoriaModificarError()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            Thread.Sleep(10000);
+            driver.FindElement(By.LinkText("Categorias")).Click();
+            Thread.Sleep(500);
+            driver.FindElement(By.XPath("//button[2]")).Click();
+            driver.FindElement(By.Id("txtNombre")).Clear();
+            driver.FindElement(By.Id("txtNombre")).SendKeys("");
+            driver.FindElement(By.XPath("//button[2]")).Click();
+            Thread.Sleep(500);
+            driver.FindElement(By.CssSelector("button")).Click();
+        }
+
+        [TestMethod]
         public void TestCategoriaBorrarError()
         {
             driver.Navigate().GoToUrl(baseURL);

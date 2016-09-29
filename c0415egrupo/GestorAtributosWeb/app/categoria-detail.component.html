@@ -1,4 +1,4 @@
-<div *ngIf="categoria">
+<div *ngIf="categoria && !modalBorrar && !faltanDatos">
   <h2 *ngIf="modoCrear==false">Detalle de la categoria {{categoria.nombre}}</h2>
     <h2 *ngIf="modoCrear">Nuevo categoria</h2>
   <div>
