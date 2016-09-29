@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace GestorAtributosWeb.Tests
 {
     [TestClass]
-    public class AtributoTest
+    public class CategoriasTest
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;

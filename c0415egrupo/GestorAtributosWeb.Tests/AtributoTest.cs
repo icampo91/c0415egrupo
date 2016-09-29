@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,11 +39,21 @@ namespace GestorAtributosWeb.Tests
         }
 
         [TestMethod]
-        public void TestAtributo()
+        public void TestAtributoCrear()
         {
             driver.Navigate().GoToUrl(baseURL);
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-            driver.FindElement(By.Id("atributos")).Click();
+            driver.FindElement(By.LinkText("Atributos")).Click();
+            driver.FindElement(By.CssSelector("button.col-lg-1")).Click();
+            driver.FindElement(By.XPath("//input")).Clear();
+            driver.FindElement(By.XPath("//input")).SendKeys("prueba");
+            driver.FindElement(By.XPath("//div[2]/input")).Clear();
+            driver.FindElement(By.XPath("//div[2]/input")).SendKeys("prueba");
+            driver.FindElement(By.XPath("//div[3]/input")).Clear();
+            driver.FindElement(By.XPath("//div[3]/input")).SendKeys("prueba");
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//li[2]/span"))).Click();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//li[1]/span"))).Click();
+            driver.FindElement(By.XPath("//button[3]")).Click();
         }
 
         [TestCleanup]
