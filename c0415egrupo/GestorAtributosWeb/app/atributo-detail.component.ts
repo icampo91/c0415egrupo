@@ -84,7 +84,6 @@ export class AtributoDetailComponent implements OnInit {
           .delete(this.atributoBorrar.id)
           .then(() => {
               if (this.atributo === this.atributoBorrar) { this.atributo = null; }
-              this.modalBorrar = false;
               this.goBack();
           });
   }
