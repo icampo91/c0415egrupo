@@ -57,6 +57,7 @@ export class CategoriaDetailComponent implements OnInit {
       this.modalBorrar = true;
   }
   cancelModal(): void {
+      this.faltanDatos = false;
       this.categoriaBorrar = null;
       this.modalBorrar = false;
   }

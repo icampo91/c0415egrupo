@@ -1,6 +1,6 @@
 <div *ngIf="categoria">
-  <h2 *ngIf="categoria">Detalle de la categoria {{categoria.nombre}}</h2>
-    <h2 *ngIf="!(categoria)">Nuevo categoria</h2>
+  <h2 *ngIf="modoCrear==false">Detalle de la categoria {{categoria.nombre}}</h2>
+    <h2 *ngIf="modoCrear">Nuevo categoria</h2>
   <div>
     <label>id: </label>{{categoria.id}}</div>
   <div>
