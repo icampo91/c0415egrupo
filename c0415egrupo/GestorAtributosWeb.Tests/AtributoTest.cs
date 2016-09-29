@@ -51,9 +51,107 @@ namespace GestorAtributosWeb.Tests
             driver.FindElement(By.XPath("//div[2]/input")).SendKeys("prueba");
             driver.FindElement(By.XPath("//div[3]/input")).Clear();
             driver.FindElement(By.XPath("//div[3]/input")).SendKeys("prueba");
-            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//li[2]/span"))).Click();
-            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//li[1]/span"))).Click();
-            driver.FindElement(By.XPath("//button[3]")).Click();
+            new SelectElement(driver.FindElement(By.XPath("//select"))).SelectByText("Integer");
+            new SelectElement(driver.FindElement(By.XPath("//div[5]/select"))).SelectByText("Informes");
+            driver.FindElement(By.XPath("//button[2]")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//tr[3]/td[5]/button")).Click();
+        }
+
+        [TestMethod]
+        public void TestAtributoBorrar()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.LinkText("Atributos"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//tr[2]/td[5]/button[3]"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[2]"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[4]"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
+            Thread.Sleep(1000);
+        }
+
+        [TestMethod]
+        public void TestAtributoEditar()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            driver.FindElement(By.LinkText("Atributos")).Click();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//tr[2]/td[5]/button[2]"))).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//div[2]/input")).Clear();
+            driver.FindElement(By.XPath("//div[2]/input")).SendKeys("Atributo_21");
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[3]"))).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//td[5]/button")).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[2]"))).Click();
+            driver.FindElement(By.XPath("//div[2]/input")).Clear();
+            driver.FindElement(By.XPath("//div[2]/input")).SendKeys("Atributo_11");
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[3]"))).Click();
+            Thread.Sleep(1000);
+        }
+
+        [TestMethod]
+        public void TestAtributoFiltros()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.LinkText("Atributos"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.Id("search-box"))).Clear();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.Id("search-box"))).SendKeys("1");
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("div.search-result"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.LinkText("Atributos"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.Id("filter-box"))).Clear();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.Id("filter-box"))).SendKeys("1");
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//td[5]/button"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
+            Thread.Sleep(1000);
+        }
+
+        [TestMethod]
+        public void TestAtributoValidarEditarCrear()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.LinkText("Atributos"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button.col-lg-1"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[2]"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[2]"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//input"))).Clear();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//input"))).SendKeys("");
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.XPath("//button[3]"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
+            Thread.Sleep(1000);
+            new WebDriverWait(driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementExists(By.CssSelector("button"))).Click();
+            Thread.Sleep(1000);
+
         }
 
         [TestCleanup]
