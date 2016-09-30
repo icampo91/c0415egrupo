@@ -23,8 +23,10 @@ namespace GestorAtributos.db
 
             context.SaveChanges();
 
-            context.atributos.Add(new Atributo("ATR1", "Atributo_1", 2, 1, "Desc..."));
-            context.atributos.Add(new Atributo("ATR2", "Atributo_2", 4, 2, "Desc..."));
+            context.atributos.Add(new Atributo("ATR1", "Atributo_1", 2, 1, "Descripción 1"));
+            context.atributos.Add(new Atributo("ATR2", "Atributo_2", 4, 2, "Descripción 2"));
+            context.atributos.Add(new Atributo("ATR3", "Atributo_3", 1, 2, "Descripción 3"));
+            context.atributos.Add(new Atributo("ATR31", "Atributo_31", 3, 2, "Descripción 31"));
 
             base.Seed(context);
         }
